@@ -1,3 +1,6 @@
+'''
+Меняем поток вывода на windows
+'''
 file = open("lex.yy.c", 'r')
 text = file.read() 
 file.close() 
