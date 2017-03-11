@@ -6,21 +6,21 @@
 
 using namespace std;
 string optimus(string postfix){
-    list<string>  infix ;// Здесь будет ответ
-	list<int>  oprior; // приоритет операции
+    list<string>  infix ;// Р—РґРµСЃСЊ Р±СѓРґРµС‚ РѕС‚РІРµС‚
+	list<int>  oprior; // РїСЂРёРѕСЂРёС‚РµС‚ РѕРїРµСЂР°С†РёРё
 	int p = 1;
 	for(int i=0;i<postfix.length();i++){
 	   string c = postfix.substr(i,1);// c = postfix[i]
-       // Операнд?
+       // РћРїРµСЂР°РЅРґ?
 	   if(c=="+"|| c=="*"){
 
-				// Верхушка выражения
+				// Р’РµСЂС…СѓС€РєР° РІС‹СЂР°Р¶РµРЅРёСЏ
 				string arg1 =  infix.back();
 				infix.pop_back();
 				string arg2 =  infix.back();
 				infix.pop_back();
 
-					// Вверхушка приоритета
+					// Р’РІРµСЂС…СѓС€РєР° РїСЂРёРѕСЂРёС‚РµС‚Р°
 					int p2 = oprior.back();
 					oprior.pop_back();
 					int p1 = oprior.back();
@@ -28,10 +28,10 @@ string optimus(string postfix){
 
                     //printf("PRIOR : { %d | %d } \n",p1,p2);
 
-				int prior = (c=="+") ? 1 : 2; // Текущий приоритет
+				int prior = (c=="+") ? 1 : 2; // РўРµРєСѓС‰РёР№ РїСЂРёРѕСЂРёС‚РµС‚
                 string exp1 ,exp2 = "";
 
-                // Если приоритет выше , то в скобки
+                // Р•СЃР»Рё РїСЂРёРѕСЂРёС‚РµС‚ РІС‹С€Рµ , С‚Рѕ РІ СЃРєРѕР±РєРё
 				if(p2<prior && p2!=0 && arg2.length()>1){
 				  exp2+="("+arg2+")";
 				}else  exp2=arg2;
@@ -39,16 +39,16 @@ string optimus(string postfix){
                   exp1 +="("+arg1+")";
 				}else  exp1=arg1;
 
-                // Создали новую Верхушку выражения
+                // РЎРѕР·РґР°Р»Рё РЅРѕРІСѓСЋ Р’РµСЂС…СѓС€РєСѓ РІС‹СЂР°Р¶РµРЅРёСЏ
 				infix.push_back(exp2+c+exp1);
-				// Создали новую Верхушку приоритета
+				// РЎРѕР·РґР°Р»Рё РЅРѕРІСѓСЋ Р’РµСЂС…СѓС€РєСѓ РїСЂРёРѕСЂРёС‚РµС‚Р°
 				oprior.push_back(prior);
 
 				printf("%d NEW PEEK -> %s\n",p++,infix.back().c_str());
 	   }
 	   else{
 		infix.push_back(c);
-        oprior.push_back(0);// Кладем нули на это
+        oprior.push_back(0);// РљР»Р°РґРµРј РЅСѓР»Рё РЅР° СЌС‚Рѕ
 		//printf("ADD CHAR -> %s\n",infix.back().c_str());
 	   }
 
@@ -62,19 +62,19 @@ void main () {
 string input;
 printf ("Input -> ");
 getline(cin, input);
-// Лайфхак
+// Р›Р°Р№С„С…Р°Рє
 YY_BUFFER_STATE bufferState = yy_scan_string(input.c_str());
 if (yyparse()==0) {
 	printf ("PARSER -> Ok\nPOLSKA -> %s \n", postfix.c_str());
 
-    // Нужна ли оптимизация?
+    // РќСѓР¶РЅР° Р»Рё РѕРїС‚РёРјРёР·Р°С†РёСЏ?
 	if(Snoop){
        optimus(postfix);
 	}
 	else{
-        // Если оптимизация не требуеться, то сразу ответ
+        // Р•СЃР»Рё РѕРїС‚РёРјРёР·Р°С†РёСЏ РЅРµ С‚СЂРµР±СѓРµС‚СЊСЃСЏ, С‚Рѕ СЃСЂР°Р·Сѓ РѕС‚РІРµС‚
        printf("ANSWER -> %s\n",input.c_str());
 	}
-}// Сообщение об ошибке заранее прописано в parser
+}// РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ Р·Р°СЂР°РЅРµРµ РїСЂРѕРїРёСЃР°РЅРѕ РІ parser
 system("pause");
 }
