@@ -25,5 +25,5 @@
 
 
 * [Flex description (lexer.l)](https://github.com/zhilyaev/Reverse-Polish-notation/blob/master/lexer.l)
-* [Bison description (parser.y)](https://github.com/zhilyaev/Reverse-Polish-notation/blob/master/parser.l)
+* [Bison description (parser.y)](https://github.com/zhilyaev/Reverse-Polish-notation/blob/master/parser.y)
 * [.EXE](https://github.com/zhilyaev/Reverse-Polish-notation/blob/master/ReversePolish.exe)
