@@ -30,18 +30,10 @@ string optimus(string postfix){
                     		//printf("PRIOR : { %d | %d } \n",p1,p2);
 
 				int prior = (c=="+") ? 1 : 2; // Текущий приоритет
-                		string exp1 ,exp2 = "";
-
-                // Если приоритет выше , то в скобки
-		if(p2<prior && p2!=0 && arg2.length()>1){
-			exp2+="("+arg2+")";
-		}else  exp2=arg2;
-                if(p1<prior && p1!=0 && arg1.length()>1){
-                	exp1 +="("+arg1+")";
-		}else  exp1=arg1;
-
+                		if(p2<prior && p2!=0 && arg2.length()>1) arg2 = "("+arg2+")";
+				if(p1<prior && p1!=0 && arg1.length()>1) arg1 = "("+arg1+")";
                 		// Создали новую Верхушку выражения
-				infix.push_back(exp2+c+exp1);
+				infix.push_back(arg2+c+arg1);
 				// Создали новую Верхушку приоритета
 				oprior.push_back(prior);
 
