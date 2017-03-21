@@ -7,7 +7,7 @@
 using namespace std;
 // Функция Оптимизации скобок
 string optimus(string postfix){
-    list<string>  infix ;// Здесь будет ответ
+    	list<string>  infix ;// Здесь будет ответ
 	list<int>  oprior; // приоритет операции
 	int p = 1; // нужна только для  #line 48
 	for(int i=0;i<postfix.length();i++){
@@ -22,16 +22,16 @@ string optimus(string postfix){
 				infix.pop_back();
 
 					// Вверхушка приоритета
-					int p2 = oprior.back();
-					oprior.pop_back();
 					int p1 = oprior.back();
+					oprior.pop_back();
+					int p2 = oprior.back();
 					oprior.pop_back();
 
                     		//printf("PRIOR : { %d | %d } \n",p1,p2);
 
 				int prior = (c=="+") ? 1 : 2; // Текущий приоритет
-                		if(p2<prior && p2!=0 && arg2.length()>1) arg2 = "("+arg2+")";
-				if(p1<prior && p1!=0 && arg1.length()>1) arg1 = "("+arg1+")";
+                		if(p2<prior && p2!=0) arg2 = "("+arg2+")";
+				if(p1<prior && p1!=0) arg1 = "("+arg1+")";
                 		// Создали новую Верхушку выражения
 				infix.push_back(arg2+c+arg1);
 				// Создали новую Верхушку приоритета
